@@ -1,7 +1,7 @@
 import torch
 from PIL import Image
 import os
-from transforms import transform_for_gray_scale, val_transforms
+from model.transforms import transform_for_gray_scale, val_transforms
 import csv
 
 model = torch.load(
@@ -20,7 +20,7 @@ preds = []
 samples = os.listdir('Хакатон')
 for sample in samples:
     file_path = f'../testing/Хакатон/{sample}'
-    idx = sample.remove('.jpg')
+    idx = sample.replace('.jpg', '')
 
     img = Image.open(file_path)
     img = img.convert('RGB')
@@ -32,7 +32,7 @@ for sample in samples:
     prediction = class_names[prediction]
 
     print(idx, prediction)
-    preds.append((idx, prediction))
+    preds.append((int(idx), prediction))
 
 with open('result.csv', 'w') as file:
     preds.sort(key=lambda x: x[0])
