@@ -8,8 +8,7 @@ from model.transforms import train_transforms, val_transforms
 
 train_dir = 'train'
 val_dir = 'val'
-class_names = sorted(os.listdir('../data/images'))
-os.chdir('../')
+class_names = sorted(os.listdir('data/images'))
 
 
 def make_train_val_dirs():

@@ -1,12 +1,6 @@
 import torch
-from train import update_model
-import torchvision
+from model.train import update_model
 import os
-
-train_dir = 'train'
-val_dir = 'val'
-class_names = sorted(os.listdir('../data/images'))
-os.chdir('../')
 
 
 def add_category():
@@ -17,3 +11,7 @@ def add_category():
 
     num_in = model.fc.out_features
     update_model(model, num_in + 1)
+
+
+if __name__ == '__main__':
+    os.chdir('../')

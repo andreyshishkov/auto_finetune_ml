@@ -15,7 +15,7 @@ background-color: 6b005f;
 	box-shadow: 3px 3px 8px 0 #000; 
 }
 body {
-  background-image: url("{{url_for('static', filename='123.jpg')}}");
+  background-image: url("{{url_for('static', filename='background.jpg')}}");
   background-repeat: no-repeat;
  background-size: 100% 100%;
 }
@@ -39,7 +39,7 @@ h3{
 <pre>
 <form action="{{ url_for('predict')}}"method="post">
 
-<input type='text' name="area" placeholder="Enter category name" required="required"/>
+<input type='text' name="area" placeholder="Add new category name" required="required"/>
 
 
 <button type="submit" class="button">Start AI</button>
