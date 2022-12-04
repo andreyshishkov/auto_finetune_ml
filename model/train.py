@@ -1,11 +1,7 @@
 import torch
-import torch.backends.cudnn as cudnn
 import numpy as np
 import torchvision
-from torchvision import models
-import time
 import os
-import copy
 import shutil
 from tqdm import tqdm
 from model.transforms import train_transforms, val_transforms
@@ -13,6 +9,8 @@ from model.transforms import train_transforms, val_transforms
 train_dir = 'train'
 val_dir = 'val'
 class_names = sorted(os.listdir('../data/images'))
+os.chdir('../')
+
 
 def make_train_val_dirs():
     for dir_name in [train_dir, val_dir]:
@@ -22,7 +20,7 @@ def make_train_val_dirs():
     data_root = os.getcwd()
 
     for class_name in class_names:
-        source_dir = os.path.join('../data/images', class_name)
+        source_dir = os.path.join('data/images', class_name)
         for i, file_name in enumerate(tqdm(os.listdir(source_dir))):
             if i % 6 != 0:
                 dest_dir = os.path.join(train_dir, class_name)
