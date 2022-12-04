@@ -113,7 +113,7 @@ def update_model(model, new_num_out):
 
     train_model(model, loss, optimizer, scheduler, 5, train_dataloader, val_dataloader)
 
-    torch.save(model.state_dict(), 'weights/weights')
-    torch.save(model, 'models/model')
+    torch.save(model.state_dict(), 'model/weights/weights')
+    torch.save(model, 'model/models/model')
 
     remove_train_val()
