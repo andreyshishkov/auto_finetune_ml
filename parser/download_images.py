@@ -22,7 +22,7 @@ async def main(category, links):
         await asyncio.gather(*tasks)
 
 
-def main_process(category):
+def get_new_images(category):
     with open(f'../data/links/{category}.txt', 'r') as file_:
         urls = file_.read().split('\n')
     os.mkdir(f'../data/images/{category}')
@@ -31,4 +31,4 @@ def main_process(category):
 
 if __name__ == '__main__':
     cat = input()
-    main_process(cat)
+    get_new_images(cat)

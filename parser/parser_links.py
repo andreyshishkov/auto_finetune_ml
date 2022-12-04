@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+import os
 
 
 more_button = 'button2 button2_size_l button2_theme_action button2_type_link button2_view_classic more__button i-bem button2_js_inited'
@@ -34,16 +35,17 @@ def make_category(browser_: webdriver, category: str):
     links = [a.find_element(By.TAG_NAME, 'img').get_attribute('src') + '\n'
              for a in a_tags]
     links[-1] = links[-1].strip('\n')
-    with open(f'../data/links/{category}.txt', 'w') as file:
+    with open(f'data/links/{category}.txt', 'w') as file:
         file.writelines(links)
 
 
-def main(category):
+def make_links(category):
     with webdriver.Chrome() as browser:
         browser.maximize_window()
         make_category(browser, category)
 
 
 if __name__ == '__main__':
+    os.chdir('../')
     cat_name = input()
-    main(cat_name)
+    make_links(cat_name)
